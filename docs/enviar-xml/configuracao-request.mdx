@@ -1,0 +1,465 @@
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Configuração da Requisição
+
+Para enviar o XML pela API é preciso enviar as seguintes informações:
+
+:::info
+
+Os tipos de XML's suportados são: `CTe`, `NFe`, `MDFe`
+
+:::
+
+- **`POST /v1/averbacao/process_xml`**
+
+<Tabs className="unique-tabs">
+  <TabItem value="request" label="Requisição">
+
+### Parâmetros do Header
+
+```text
+Authorization: SECRET_KEY
+Content-Type: application/xml
+```
+
+A `SECRET_KEY` poderá ser gerada no portal do AverbGo ([https://averbgo.com.br/main/chaves](https://averbgo.com.br/main/chaves))
+
+### Corpo da Requisição
+
+O XML deverá ser enviado no corpo da requisição.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<cteProc
+  xmlns="http://www.portalfiscal.inf.br/cte" versao="3.00">
+  <CTe>
+    <infCte Id="CTe32211201599101006124570010006988971798896004" versao="3.00">
+      <ide>
+        <cUF>32</cUF>
+        <cCT>79889600</cCT>
+        <CFOP>6353</CFOP>
+        <natOp>PREST. SERV. TRANSPORTE A ESTABELECIMENTO COMERCIAL</natOp>
+        <mod>57</mod>
+        <serie>1</serie>
+        <nCT>6989000</nCT>
+        <dhEmi>2022-08-30T18:00:00.000Z</dhEmi>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>4</cDV>
+        <tpAmb>1</tpAmb>
+        <tpCTe>0</tpCTe>
+        <procEmi>0</procEmi>
+        <verProc>VESTA 1.0</verProc>
+        <cMunEnv>3205309</cMunEnv>
+        <xMunEnv>VITORIA</xMunEnv>
+        <UFEnv>ES</UFEnv>
+        <modal>01</modal>
+        <tpServ>0</tpServ>
+        <cMunIni>3205101</cMunIni>
+        <xMunIni>VIANA</xMunIni>
+        <UFIni>ES</UFIni>
+        <cMunFim>3131307</cMunFim>
+        <xMunFim>IPATINGA</xMunFim>
+        <UFFim>MG</UFFim>
+        <retira>0</retira>
+        <indIEToma>1</indIEToma>
+        <toma3>
+          <toma>0</toma>
+        </toma3>
+      </ide>
+      <compl>
+        <xCaracAd>ENTREGA</xCaracAd>
+        <ObsCont xCampo="LeidaTransparencia">
+          <xTexto>O valor aproximado de tributos incidentes sobre o preco deste servico e de R$ 3,92</xTexto>
+        </ObsCont>
+        <ObsCont xCampo="EMBARQUE">
+          <xTexto>401095836</xTexto>
+        </ObsCont>
+        <ObsCont xCampo="PEDIDONF">
+          <xTexto>12731273</xTexto>
+        </ObsCont>
+        <ObsCont xCampo="PEDIDO">
+          <xTexto>12731273</xTexto>
+        </ObsCont>
+      </compl>
+      <emit>
+        <CNPJ>22266175000188</CNPJ>
+        <IE>83680802</IE>
+        <xNome>SEQUOIA LOGISTICA E TRANSPORTES S.A.</xNome>
+        <xFant>Sequoia Vitoria</xFant>
+        <enderEmit>
+          <xLgr>Rua Luiz Antonio</xLgr>
+          <nro>26</nro>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3205309</cMun>
+          <xMun>VITORIA</xMun>
+          <CEP>29010170</CEP>
+          <UF>ES</UF>
+        </enderEmit>
+      </emit>
+      <rem>
+        <CNPJ>89086144000116</CNPJ>
+        <IE>083078665</IE>
+        <xNome>KABUM COMERCIO ELETRONICO S.A</xNome>
+        <xFant>KABUM CO</xFant>
+        <enderReme>
+          <xLgr>ROD BR262</xLgr>
+          <nro>S/N</nro>
+          <xBairro>VILA BETHANIA</xBairro>
+          <cMun>3205101</cMun>
+          <xMun>VIANA</xMun>
+          <CEP>29136010</CEP>
+          <UF>ES</UF>
+        </enderReme>
+      </rem>
+      <dest>
+        <CNPJ>02102203000114</CNPJ>
+        <IE>3137137310001</IE>
+        <xNome>EFICAZ SEGURANCA</xNome>
+        <enderDest>
+          <xLgr>AVENIDA BRASIL</xLgr>
+          <nro>940</nro>
+          <xBairro>IGUACU</xBairro>
+          <cMun>3131307</cMun>
+          <xMun>IPATINGA</xMun>
+          <CEP>35162036</CEP>
+          <UF>MG</UF>
+        </enderDest>
+      </dest>
+      <vPrest>
+        <vTPrest>32.65</vTPrest>
+        <vRec>32.65</vRec>
+        <Comp>
+          <xNome>FRETE PESO</xNome>
+          <vComp>19.52</vComp>
+        </Comp>
+        <Comp>
+          <xNome>GRIS</xNome>
+          <vComp>4.61</vComp>
+        </Comp>
+        <Comp>
+          <xNome>ADVALOREM</xNome>
+          <vComp>4.61</vComp>
+        </Comp>
+      </vPrest>
+      <imp>
+        <ICMS>
+          <ICMS00>
+            <CST>00</CST>
+            <vBC>32.65</vBC>
+            <pICMS>12.00</pICMS>
+            <vICMS>3.92</vICMS>
+          </ICMS00>
+        </ICMS>
+        <vTotTrib>3.92</vTotTrib>
+      </imp>
+      <infCTeNorm>
+        <infCarga>
+          <vCarga>3070.16</vCarga>
+          <proPred>PRODUTOS DE E-COMMERCE</proPred>
+          <xOutCat>SECA</xOutCat>
+          <infQ>
+            <cUnid>01</cUnid>
+            <tpMed>PESO DECLARADO</tpMed>
+            <qCarga>1.0920</qCarga>
+          </infQ>
+          <infQ>
+            <cUnid>01</cUnid>
+            <tpMed>PESO BASE DE CALCULO</tpMed>
+            <qCarga>1.0920</qCarga>
+          </infQ>
+          <infQ>
+            <cUnid>01</cUnid>
+            <tpMed>PESO CUBADO</tpMed>
+            <qCarga>0.0000</qCarga>
+          </infQ>
+          <infQ>
+            <cUnid>01</cUnid>
+            <tpMed>PESO REAL</tpMed>
+            <qCarga>1.0920</qCarga>
+          </infQ>
+          <infQ>
+            <cUnid>03</cUnid>
+            <tpMed>VOLUME</tpMed>
+            <qCarga>1.0000</qCarga>
+          </infQ>
+        </infCarga>
+        <infDoc>
+          <infNFe>
+            <chave>32211205570714000825550010127312731044281450</chave>
+            <dPrev>2022-12-13</dPrev>
+          </infNFe>
+        </infDoc>
+        <infModal versaoModal="3.00">
+          <rodo>
+            <RNTRC>00086149</RNTRC>
+          </rodo>
+        </infModal>
+      </infCTeNorm>
+    </infCte>
+    <infCTeSupl>
+      <qrCodCTe>https://dfe-portal.svrs.rs.gov.br/cte/qrCode?chCTe=32211201599101006124570010006988971798896004&amp;amp;tpAmb=1</qrCodCTe>
+    </infCTeSupl>
+    <Signature
+      xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#CTe32211201599101006124570010006988971798896004">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>UZH+xdmAJ6/egF2vR35b8i1zo2Q=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>BkYHFdNGXmVEbfpOXvNe/ZhVi1VHgBcyUocSIHExHdv3CA7bFoe8Ab70aHzgy2CZ3wC8QxtgEmesOegGMO9i9LUDgzv73A98o/3uXv7Od29I6dL33iJUwQZ9kgb+nFzukIjg7kli9B3f/64aWBNnGatN7Y0pjH1TPuY0YijJCkYXj34hgpqAuazZ+3TeKv3xciKd5zMu1pajnUOwPQ6rZuiZEAxoQGZPovgH+VQho9gHpZsyKiVrf/MFgp8RuHcHmIi7KM630KV2zgk1gTtt7xiANo3ihL00N1XDNeixdLJutYS7uP4dBx2aYTWDLyn9+SK1rSzVUYM7bcCjB+cb8w==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+    <CobAd>
+      <feijao>1000</feijao>
+    </CobAd>
+  </CTe>
+  <protCTe versao="3.00">
+    <infProt Id="CTe332210111936059">
+      <tpAmb>1</tpAmb>
+      <verAplic>RS20211206182450</verAplic>
+      <chCTe>32211201599101006124570010006988971798896004</chCTe>
+      <dhRecbto>2021-12-07T23:46:49-03:00</dhRecbto>
+      <nProt>332210111936059</nProt>
+      <digVal>UZH+xdmAJ6/egF2vR35b8i1zo2Q=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso do CT-e</xMotivo>
+    </infProt>
+  </protCTe>
+</cteProc>
+```
+
+  </TabItem>
+  <TabItem value="curl" label="cURL">
+
+```bash
+curl --request POST \
+  --url https://87eixpyd47.execute-api.us-east-2.amazonaws.com/v1/averbacao/process_xml \
+  --header 'Authorization: SECRET_KEY' \
+  --header 'Content-Type: application/xml' \
+  --data '<?xml version="1.0" encoding="UTF-8"?>
+<cteProc
+	xmlns="http://www.portalfiscal.inf.br/cte" versao="3.00">
+	<CTe>
+		<infCte Id="CTe32211201599101006124570010006988971798896004" versao="3.00">
+			<ide>
+				<cUF>32</cUF>
+				<cCT>79889600</cCT>
+				<CFOP>6353</CFOP>
+				<natOp>PREST. SERV. TRANSPORTE A ESTABELECIMENTO COMERCIAL</natOp>
+				<mod>57</mod>
+				<serie>1</serie>
+				<nCT>6989000</nCT>
+				<dhEmi>2022-08-30T18:00:00.000Z</dhEmi>
+				<tpImp>1</tpImp>
+				<tpEmis>1</tpEmis>
+				<cDV>4</cDV>
+				<tpAmb>1</tpAmb>
+				<tpCTe>0</tpCTe>
+				<procEmi>0</procEmi>
+				<verProc>VESTA 1.0</verProc>
+				<cMunEnv>3205309</cMunEnv>
+				<xMunEnv>VITORIA</xMunEnv>
+				<UFEnv>ES</UFEnv>
+				<modal>01</modal>
+				<tpServ>0</tpServ>
+				<cMunIni>3205101</cMunIni>
+				<xMunIni>VIANA</xMunIni>
+				<UFIni>ES</UFIni>
+				<cMunFim>3131307</cMunFim>
+				<xMunFim>IPATINGA</xMunFim>
+				<UFFim>MG</UFFim>
+				<retira>0</retira>
+				<indIEToma>1</indIEToma>
+				<toma3>
+					<toma>0</toma>
+				</toma3>
+			</ide>
+			<compl>
+				<xCaracAd>ENTREGA</xCaracAd>
+				<ObsCont xCampo="LeidaTransparencia">
+					<xTexto>O valor aproximado de tributos incidentes sobre o preco deste servico e de R$ 3,92</xTexto>
+				</ObsCont>
+				<ObsCont xCampo="EMBARQUE">
+					<xTexto>401095836</xTexto>
+				</ObsCont>
+				<ObsCont xCampo="PEDIDONF">
+					<xTexto>12731273</xTexto>
+				</ObsCont>
+				<ObsCont xCampo="PEDIDO">
+					<xTexto>12731273</xTexto>
+				</ObsCont>
+			</compl>
+			<emit>
+				<CNPJ>22266175000188</CNPJ>
+				<IE>83680802</IE>
+				<xNome>SEQUOIA LOGISTICA E TRANSPORTES S.A.</xNome>
+				<xFant>Sequoia Vitoria</xFant>
+				<enderEmit>
+					<xLgr>Rua Luiz Antonio</xLgr>
+					<nro>26</nro>
+					<xBairro>CENTRO</xBairro>
+					<cMun>3205309</cMun>
+					<xMun>VITORIA</xMun>
+					<CEP>29010170</CEP>
+					<UF>ES</UF>
+				</enderEmit>
+			</emit>
+			<rem>
+				<CNPJ>89086144000116</CNPJ>
+				<IE>083078665</IE>
+				<xNome>KABUM COMERCIO ELETRONICO S.A</xNome>
+				<xFant>KABUM CO</xFant>
+				<enderReme>
+					<xLgr>ROD BR262</xLgr>
+					<nro>S/N</nro>
+					<xBairro>VILA BETHANIA</xBairro>
+					<cMun>3205101</cMun>
+					<xMun>VIANA</xMun>
+					<CEP>29136010</CEP>
+					<UF>ES</UF>
+				</enderReme>
+			</rem>
+			<dest>
+				<CNPJ>02102203000114</CNPJ>
+				<IE>3137137310001</IE>
+				<xNome>EFICAZ SEGURANCA</xNome>
+				<enderDest>
+					<xLgr>AVENIDA BRASIL</xLgr>
+					<nro>940</nro>
+					<xBairro>IGUACU</xBairro>
+					<cMun>3131307</cMun>
+					<xMun>IPATINGA</xMun>
+					<CEP>35162036</CEP>
+					<UF>MG</UF>
+				</enderDest>
+			</dest>
+			<vPrest>
+				<vTPrest>32.65</vTPrest>
+				<vRec>32.65</vRec>
+				<Comp>
+					<xNome>FRETE PESO</xNome>
+					<vComp>19.52</vComp>
+				</Comp>
+				<Comp>
+					<xNome>GRIS</xNome>
+					<vComp>4.61</vComp>
+				</Comp>
+				<Comp>
+					<xNome>ADVALOREM</xNome>
+					<vComp>4.61</vComp>
+				</Comp>
+			</vPrest>
+			<imp>
+				<ICMS>
+					<ICMS00>
+						<CST>00</CST>
+						<vBC>32.65</vBC>
+						<pICMS>12.00</pICMS>
+						<vICMS>3.92</vICMS>
+					</ICMS00>
+				</ICMS>
+				<vTotTrib>3.92</vTotTrib>
+			</imp>
+			<infCTeNorm>
+				<infCarga>
+					<vCarga>3070.16</vCarga>
+					<proPred>PRODUTOS DE E-COMMERCE</proPred>
+					<xOutCat>SECA</xOutCat>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO DECLARADO</tpMed>
+						<qCarga>1.0920</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO BASE DE CALCULO</tpMed>
+						<qCarga>1.0920</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO CUBADO</tpMed>
+						<qCarga>0.0000</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO REAL</tpMed>
+						<qCarga>1.0920</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>03</cUnid>
+						<tpMed>VOLUME</tpMed>
+						<qCarga>1.0000</qCarga>
+					</infQ>
+				</infCarga>
+				<infDoc>
+					<infNFe>
+						<chave>32211205570714000825550010127312731044281450</chave>
+						<dPrev>2022-12-13</dPrev>
+					</infNFe>
+				</infDoc>
+				<infModal versaoModal="3.00">
+					<rodo>
+						<RNTRC>00086149</RNTRC>
+					</rodo>
+				</infModal>
+			</infCTeNorm>
+		</infCte>
+		<infCTeSupl>
+			<qrCodCTe>https://dfe-portal.svrs.rs.gov.br/cte/qrCode?chCTe=32211201599101006124570010006988971798896004&amp;amp;tpAmb=1</qrCodCTe>
+		</infCTeSupl>
+		<Signature
+			xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+				<Reference URI="#CTe32211201599101006124570010006988971798896004">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+					<DigestValue>UZH+xdmAJ6/egF2vR35b8i1zo2Q=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>BkYHFdNGXmVEbfpOXvNe/ZhVi1VHgBcyUocSIHExHdv3CA7bFoe8Ab70aHzgy2CZ3wC8QxtgEmesOegGMO9i9LUDgzv73A98o/3uXv7Od29I6dL33iJUwQZ9kgb+nFzukIjg7kli9B3f/64aWBNnGatN7Y0pjH1TPuY0YijJCkYXj34hgpqAuazZ+3TeKv3xciKd5zMu1pajnUOwPQ6rZuiZEAxoQGZPovgH+VQho9gHpZsyKiVrf/MFgp8RuHcHmIi7KM630KV2zgk1gTtt7xiANo3ihL00N1XDNeixdLJutYS7uP4dBx2aYTWDLyn9+SK1rSzVUYM7bcCjB+cb8w==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+		<CobAd>
+			<feijao>1000</feijao>
+		</CobAd>
+	</CTe>
+	<protCTe versao="3.00">
+		<infProt Id="CTe332210111936059">
+			<tpAmb>1</tpAmb>
+			<verAplic>RS20211206182450</verAplic>
+			<chCTe>32211201599101006124570010006988971798896004</chCTe>
+			<dhRecbto>2021-12-07T23:46:49-03:00</dhRecbto>
+			<nProt>332210111936059</nProt>
+			<digVal>UZH+xdmAJ6/egF2vR35b8i1zo2Q=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do CT-e</xMotivo>
+		</infProt>
+	</protCTe>
+</cteProc>
+'
+```
+
+  </TabItem>  
+</Tabs>
