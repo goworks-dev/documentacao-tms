@@ -1,0 +1,48 @@
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Requisição
+
+Para enviar o XML pela API é preciso enviar as seguintes informações:
+
+:::info
+
+Os tipos de XML's suportados são: `CTe`, `NFe`, `MDFe`
+
+:::
+
+- **`POST /v1/averbacao/process_xml`**
+
+<Tabs className="unique-tabs">
+  <TabItem value="request" label="Requisição">
+
+### Parâmetros do Header
+
+```text
+Authorization: SECRET_KEY
+Content-Type: application/xml
+```
+
+A `SECRET_KEY` poderá ser gerada no portal do AverbGo ([https://averbgo.com.br/main/chaves](https://averbgo.com.br/main/chaves))
+
+### Corpo da Requisição
+
+O `XML` deverá ser enviado no body da requisição.
+
+### Resposta
+
+Em construção...
+
+  </TabItem>
+  <TabItem value="curl" label="cURL">
+
+```bash
+curl --request POST \
+  --url https://api.averbgo.com.br/v1/averbacao/process_xml \
+  --header 'Authorization: SECRET_KEY' \
+  --header 'Content-Type: application/xml' \
+  --data 'CONTEUDO_DO_XML'
+```
+
+  </TabItem>  
+</Tabs>
