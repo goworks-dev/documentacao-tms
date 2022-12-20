@@ -29,6 +29,85 @@ A `SECRET_KEY` poderá ser gerada no portal do AverbGo ([https://averbgo.com.br/
 
 O `XML` deverá ser enviado no body da requisição.
 
+### Tags Extras
+
+| TAG EXTRA CTE          | TAG EXTRA NFE              | CAMPO                   |
+| ---------------------- | -------------------------- | ----------------------- |
+| modal                  | modal                      | Tipo Modal              |
+| ramo                   | ramo                       | Ramo                    |
+| ufCarrega              | ufCarrega                  | UF Origem               |
+| ufDescarrega           | ufDescarrega               | UF Destino              |
+| tipoMerca              | tipoMerca                  | Tipo Merca              |
+| cpfMotorista           | cpfMotorista               | CPF Motorista           |
+| rgMotorista            | rgMotorista                | RG Motorista            |
+| codLiberacao           | codLiberacao               | Libera Motorista        |
+| opCargaDescarga        | opCargaDescarga            | Carga e Descarga        |
+| opIcamento             | opIcamento                 | Içamento                |
+| opRemocao              | opRemocao                  | Remoção                 |
+| veiculoProprio         | veiculoProprio             | Transp Próprio          |
+| idVeiculo              | idVeiculo                  | Id veiculo              |
+| rcfdc                  | rcfdc                      | Cobertura RCFDC         |
+| rastreador             | rastreador                 | Rastreado               |
+| escolta                | escolta                    | Escoltado               |
+| meiosProprios          | meiosProprios              | Meios Próprios          |
+| container              | container                  | Valor Container         |
+| acessorios             | acessorios                 | Valor Acessórios        |
+| frete                  | frete                      | Valor Frete             |
+| despesas               | despesas                   | Valor Despesas          |
+| sem tag extra          | lucrosEsperados            | Valor Lucros Esp        |
+| impostos               | tag nativa (sem tag extra) | Valor Impostos          |
+| embarque               | embarque                   | Data e hora do embarque |
+| tipViagemInternacional | tipViagemInternacional     | Importa Exporta         |
+| avarias                | avarias                    | Valor Avarias           |
+| cidadeCarrega          | cidadeCarrega              | Cidade Origem           |
+| cidadeDescarrega       | cidadeDescarrega           | Cidade Destino          |
+| cnpjIsencao            | cnpjIsencao                | CNPJ Isenção            |
+
+O envio de tags extras deve ser colocado dentro da tag `compl`. Segue abaixo o modelo de XML.
+
+<details>
+<summary>Exemplo de Envio das Tags Extras</summary>
+
+```xml
+<compl>
+	<ObsCont xCampo="embarque">
+		<xTexto>2022-11-28T23:45:59-03:00</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="cpfMotorista">
+		<xTexto>36770479869</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="cpfMotorista">
+		<xTexto>00011122285</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="idVeiculo">
+		<xTexto>gei6644</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="idVeiculo">
+		<xTexto>gei6655</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="rcfdc">
+		<xTexto>S</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="container">
+		<xTexto>0.01</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="acessorios">
+		<xTexto>20.00</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="despesas">
+		<xTexto>50.00</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="impostos">
+		<xTexto>30.00</xTexto>
+	</ObsCont>
+	<ObsCont xCampo="avarias">
+		<xTexto>40.00</xTexto>
+	</ObsCont>
+</compl>
+```
+
+</details>
+
 ### Resposta
 
 Em construção...
