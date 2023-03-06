@@ -107,11 +107,6 @@ O envio de tags extras deve ser colocado dentro da tag `compl`. Segue abaixo o m
 ```
 
 </details>
-
-### Resposta
-
-Em construção...
-
   </TabItem>
   <TabItem value="curl" label="cURL">
 
@@ -123,5 +118,210 @@ curl --request POST \
   --data 'CONTEUDO_DO_XML'
 ```
 
-  </TabItem>  
+  </TabItem>
+
+  <TabItem value="response" label="Resposta Tipos">
+
+```json
+{
+  "message": "string",
+  "endorsement": {
+    "dfe": {
+      "id_averbgo_dfe": "string",
+      "id_tipo_dfe": "string",
+      "doc_apoio": "string",
+      "initialTag": "string",
+      "docType": "string",
+      "num_chave_dfe": "string",
+      "xml": "string"
+    },
+    "id_documento": "string",
+    "id_pessoa_emitente": "string",
+    "cod_usuario": "string",
+    "data_emissao": "string",
+    "hora_emissao": "string",
+    "valor_carga": "number",
+    "valor_total": "number",
+    "valor_carga_segurado": "number",
+    "cod_impor_ept": "number",
+    "cidade_origem_id": "string",
+    "cidade_origem_nome": "string",
+    "ufini": "string",
+    "cidade_destino_id": "string",
+    "cidade_destino_nome": "string",
+    "uffim": "string",
+    "cnpj_emitente": "string",
+    "nom_fantasia_emitente": "string",
+    "cnpj_relacionamento": "string",
+    "nom_fantasia_relacionamento": "string",
+    "motivo": "string",
+    "dhr_averbacao": "string",
+    "data_embarque": "string",
+    "hora_embarque": "string",
+    "numero_documento": "string",
+    "num_serie_documento": "string",
+    "tip_status": "number",
+    "des_tipo_status": "string",
+    "id_meio_averbacao": "number",
+    "modal": "string",
+    "tipo_documento": "number",
+    "urbano": "string",
+    "isencao": {
+      "id_isencao": "string",
+      "cod_docum_res": "string",
+      "tipo_isencao": "string"
+    },
+    "apolices": [
+      {
+        "id_apolice": "string",
+        "tip_status": "number",
+        "id_ramo": "number",
+        "sta_cobertura_roubo": "boolean",
+        "sta_cobertura_2risco": "boolean",
+        "cod_apolice": "string",
+        "cod_externo": "string",
+        "dhr_inicio_vigencia": "string",
+        "dhr_fim_vigencia": "string",
+        "id_apolice_base": "string",
+        "id_apolice_anterior": "string",
+        "tip_usuario": "string",
+        "dhr_inclusao": "string",
+        "dhr_alteracao": "string",
+        "cod_usuario": "string",
+        "sta_valor_nota": "boolean",
+        "id_apolice_validade": "string",
+        "id_extrapolacao": "number",
+        "id_prazo_averbacao": "number",
+        "vlr_img": "number",
+        "num_prazo_averbacao": "number",
+        "num_prazo_emissao": "number",
+        "dta_inicio_validade": "string",
+        "dta_fim_validade": "string",
+        "cod_susep": "number",
+        "des_extrapolacao": "string",
+        "des_prazo_averbacao": "string",
+        "id_pessoa_emitente": "string",
+        "nom_fantasia_emitente": "string",
+        "id_pessoa_relacionamento": "string",
+        "nom_fantasia_relacionamento": "string",
+        "cnpj_relacionamento": "string",
+        "cod_documento_pessoa_estipulado": "string",
+        "cod_sigla_ramo": "string",
+        "des_ramo": "string"
+      }
+    ],
+    "antts": [
+      {
+        "antt": "string",
+        "numero_apolice": "string"
+      }
+    ]
+  }
+}
+```
+
+  </TabItem>
+
+  <TabItem value="example-response" label="Resposta Exemplo">
+
+```json
+{
+  "message": "Processo de Averbação concluido com sucesso!",
+  "endorsement": {
+    "dfe": {
+      "id_averbgo_dfe": "aeca10ff-0aef-4e59-b248-0d872b259868",
+      "id_tipo_dfe": "55",
+      "doc_apoio": "dfe-067ada03-ccb1-4b02-b101-285fef917a85",
+      "initialTag": "nfeproc",
+      "docType": "nfe",
+      "num_chave_dfe": "99999999999999999999999999999999999999999999",
+      "xml": "XML ORIGINAL"
+    },
+    "id_documento": "aeca10ff-0aef-4e59-b248-0d872b259868",
+    "id_pessoa_emitente": "24da1eae-f39a-4cc4-8fc5-d4f28bc2f1ca",
+    "cod_usuario": "TESTES",
+    "data_emissao": "2022-08-08",
+    "hora_emissao": "11:06:57",
+    "valor_carga": 10000,
+    "valor_total": 10000,
+    "valor_carga_segurado": 10000,
+    "cod_impor_ept": 1,
+    "cidade_origem_id": "5300108",
+    "cidade_origem_nome": "BRASILIA - DF",
+    "ufini": "DF",
+    "cidade_destino_id": "5300108",
+    "cidade_destino_nome": "BRASILIA - DF",
+    "uffim": "DF",
+    "cnpj_emitente": "12123123000101",
+    "nom_fantasia_emitente": "TESTE",
+    "cnpj_relacionamento": "12123123000101",
+    "nom_fantasia_relacionamento": "TESTE",
+    "motivo": "",
+    "dhr_averbacao": "2023-03-06T09:52:26.393Z",
+    "data_embarque": "2023-03-06",
+    "hora_embarque": "09:52",
+    "numero_documento": "1822047",
+    "num_serie_documento": "0",
+    "tip_status": 1,
+    "des_tipo_status": "Averbado",
+    "id_meio_averbacao": 2,
+    "modal": "01",
+    "tipo_documento": 55,
+    "urbano": "Sim",
+    "isencao": {
+      "id_isencao": null,
+      "cod_docum_res": null,
+      "tipo_isencao": "Sem isenção"
+    },
+    "apolices": [
+      {
+        "id_apolice": "6214b6e7-0ec0-4713-98e8-6654305cad67",
+        "tip_status": 1,
+        "id_ramo": 1,
+        "sta_cobertura_roubo": false,
+        "sta_cobertura_2risco": false,
+        "cod_apolice": "33333",
+        "cod_externo": "33333",
+        "dhr_inicio_vigencia": "2023-02-01T00:00:00.000Z",
+        "dhr_fim_vigencia": "2024-01-02T00:00:00.000Z",
+        "id_apolice_base": null,
+        "id_apolice_anterior": null,
+        "tip_usuario": "I",
+        "dhr_inclusao": "2023-03-06T09:50:17.863Z",
+        "dhr_alteracao": "2023-03-06T09:50:17.863Z",
+        "cod_usuario": "teste.teste",
+        "sta_valor_nota": false,
+        "id_apolice_validade": "bfaaccea-391b-4809-b7e0-cec3a301f66d",
+        "id_extrapolacao": 1,
+        "id_prazo_averbacao": 1,
+        "vlr_img": 100000,
+        "num_prazo_averbacao": 1,
+        "num_prazo_emissao": null,
+        "dta_inicio_validade": "2023-02-01T00:00:00.000Z",
+        "dta_fim_validade": "2024-01-02T00:00:00.000Z",
+        "cod_susep": 21,
+        "des_extrapolacao": "Recusa",
+        "des_prazo_averbacao": "Antes do Embarque",
+        "id_pessoa_emitente": "24da1eae-f39a-4cc4-8fc5-d4f28bc2f1ca",
+        "nom_fantasia_emitente": "TESTE",
+        "id_pessoa_relacionamento": "36db2c33-fd10-4bbd-8386-f8df4374f54a",
+        "nom_fantasia_relacionamento": "TESTE",
+        "cnpj_relacionamento": "12123123000101",
+        "cod_documento_pessoa_estipulado": null,
+        "cod_sigla_ramo": "TRNAC",
+        "des_ramo": "Transporte Nacional"
+      }
+    ],
+    "antts": [
+      {
+        "antt": "0623801243318365800013555000001822047097",
+        "numero_apolice": "33333"
+      }
+    ]
+  }
+}
+```
+
+  </TabItem>
+
 </Tabs>
