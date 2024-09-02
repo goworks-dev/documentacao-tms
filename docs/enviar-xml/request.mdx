@@ -11,7 +11,7 @@ Os tipos de XML's suportados são: `CTe`, `NFe`, `MDFe`
 
 :::
 
-- **`POST /v1/averbacao/process_xml`**
+- **`POST /averbacao/process_xml`**
 
 <Tabs className="unique-tabs">
   <TabItem value="request" label="Requisição">
@@ -112,7 +112,7 @@ O envio de tags extras deve ser colocado dentro da tag `compl`. Segue abaixo o m
 
 ```bash
 curl --request POST \
-  --url https://api.averbgo.com.br/v1/averbacao/process_xml \
+  --url https://api.averbgo.com.br/averbacao/process_xml \
   --header 'Authorization: SECRET_KEY' \
   --header 'Content-Type: application/xml' \
   --data 'CONTEUDO_DO_XML'
