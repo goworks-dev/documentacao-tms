@@ -18,7 +18,7 @@ Toda resposta da API é um JSON com um campo **`message`** e, conforme o caso, *
 
 | Bloco | Significado | Detalhamento |
 |---|---|---|
-| `emitentes` | Documento processado para **mais de um emitente/relacionamento**. Cada emitente traz seus próprios produtos. | [Multiemitente](./multiemitente.md) |
+| `emitentes` | Mesmo emitente vinculado a **mais de uma hierarquia** (cliente/parceiro). Cada hierarquia traz seus próprios produtos. | [Multi-hierarquia](./multi-hierarquia.md) |
 | `produtos` | Resultado **por produto contratado** (Transporte, RC-V, Transmissão). | [Produtos](./produtos.md) |
 | `endorsement` | Averbação de CT-e, NF-e ou Outros. Contém o número **ANTT**. | [Averbação](./averbacao.md) |
 | `mdfe` | Processamento de MDF-e. | [MDF-e](./mdfe.md) |
@@ -41,7 +41,7 @@ Ordem recomendada de verificação:
    sim ↓
 
 2. resposta.emitentes é um array ?
-   sim → percorra os emitentes e consolide o resultado    [Multiemitente]
+   sim → percorra as hierarquias e consolide o resultado  [Multi-hierarquia]
    não ↓
 
 3. resposta.produtos existe ?
@@ -78,7 +78,7 @@ O número **ANTT** é o número da averbação e deve ser gravado pelo TMS.
 |---|---|
 | `endorsement` | `endorsement.antts[].antt` — pode haver **mais de um** (um por apólice) |
 | `produtos` | `produtos.TRANSPORTE.data.endorsement.antts[].antt` |
-| `emitentes` | `emitentes[].produtos.TRANSPORTE.data.endorsement.antts[].antt` — **por emitente** |
+| `emitentes` | `emitentes[].produtos.TRANSPORTE.data.endorsement.antts[].antt` — **por hierarquia** |
 | `mdfe` | Não há ANTT. O identificador é `mdfe.id_averbgo_mdfe` |
 | `event` / `event_mdfe` | Não há ANTT. São eventos sobre um documento já averbado |
 

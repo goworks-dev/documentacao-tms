@@ -10,7 +10,7 @@ Retorno do processamento de um **Manifesto Eletrônico de Documentos Fiscais**. 
 ```text
 resposta.mdfe                                              (documento simples)
 resposta.produtos.TRANSPORTE.data.mdfe                     (emitente com vários produtos)
-resposta.emitentes[i].produtos.TRANSPORTE.data.mdfe        (multiemitente)
+resposta.emitentes[i].produtos.TRANSPORTE.data.mdfe        (multi-hierarquia)
 ```
 
 :::info MDF-e não gera ANTT

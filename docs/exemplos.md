@@ -59,7 +59,7 @@ Respostas reais (com identificadores mascarados) e o tratamento esperado.
 
 ---
 
-## 4. Multiemitente — averbação
+## 4. Multi-hierarquia — averbação
 
 ```json
 {
@@ -75,11 +75,11 @@ Respostas reais (com identificadores mascarados) e o tratamento esperado.
 }
 ```
 
-**Tratamento:** averbado. Gravar o ANTT **por emitente** — cada relacionamento tem o seu.
+**Tratamento:** averbado. É o mesmo emitente em duas hierarquias — gravar o ANTT **de cada hierarquia**, porque cada uma responde a uma apólice diferente.
 
 ---
 
-## 5. Multiemitente — cancelamento com falha parcial
+## 5. Multi-hierarquia — cancelamento com falha parcial
 
 ```json
 {

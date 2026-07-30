@@ -1,11 +1,13 @@
 ---
 sidebar_position: 2
-title: Multiemitente
+title: Multi-hierarquia
 ---
 
-# Retorno multiemitente (`emitentes`)
+# Retorno multi-hierarquia (`emitentes`)
 
-Quando o documento envolve mais de um emitente/relacionamento — o caso mais comum hoje em operações com cliente e parceiro distintos —, a API responde com o array **`emitentes`**. Cada item traz o resultado dos produtos daquele emitente.
+Um mesmo emitente pode estar vinculado a **mais de uma hierarquia** — combinações distintas de cliente e parceiro (seguradora), cada uma com suas próprias apólices e produtos. Quando isso acontece, um único envio, com **uma única chave de acesso**, é processado em todas as hierarquias e a API responde com o array **`emitentes`**.
+
+Cada item do array é **uma hierarquia**, não um emitente diferente: repare que o campo `emitente` costuma repetir o mesmo nome em todos os itens, variando `cliente` e `parceiro`.
 
 :::info Verifique este bloco primeiro
 `emitentes` tem precedência sobre todos os demais. Se ele existir, os dados de averbação estão **dentro** dele — não procure `endorsement` na raiz.
@@ -51,23 +53,29 @@ Quando o documento envolve mais de um emitente/relacionamento — o caso mais co
 }
 ```
 
-## Campos de cada emitente
+No exemplo acima é **o mesmo emitente** (`NR PARTICIPACOES`) em duas hierarquias: uma com o cliente GPS-PAMCARY e a seguradora MAPFRE, outra com o cliente e parceiro DATASYSTEM. Cada hierarquia processou o produto que lhe cabe.
+
+## Campos de cada hierarquia
 
 | Campo | Tipo | Descrição |
 |---|---|---|
-| `idPessoaEmitente` | string (UUID) | Identificador do emitente no AverbGo |
+| `idPessoaEmitente` | string (UUID) | Identificador do emitente no AverbGo naquela hierarquia |
 | `emitente` | string | Nome do emitente |
-| `cliente` | string | Cliente (segurado) daquele relacionamento |
-| `parceiro` | string | Parceiro/seguradora daquele relacionamento |
+| `cliente` | string | Cliente (segurado) da hierarquia |
+| `parceiro` | string | Parceiro/seguradora da hierarquia |
 | `produtos` | objeto | Mapa `NOME_DO_PRODUTO` → resultado. Ver [Produtos](./produtos.md) |
 
 :::tip Use os campos estruturados
-`emitente`, `cliente` e `parceiro` já vêm prontos. Não é necessário extrair esses nomes do texto da `message` — que também os repete, mas em formato livre.
+`emitente`, `cliente` e `parceiro` já vêm prontos e identificam a hierarquia. Não é necessário extrair esses nomes do texto da `message` — que também os repete, mas em formato livre.
+:::
+
+:::caution A `message` do topo fala em "emitentes"
+A mensagem de resumo usa a redação `"2 emitente(s) processado(s) com sucesso"`, contando **hierarquias**, não emitentes distintos. É texto de exibição — a contagem confiável é `emitentes.length`.
 :::
 
 ## Consolidação do resultado
 
-Percorra **todos os produtos de todos os emitentes**:
+Percorra **todos os produtos de todas as hierarquias**:
 
 ```text
 sucessos = produtos com success == true
@@ -84,7 +92,7 @@ Exemplo de resposta com falha parcial:
 {
   "message": "[NR PARTICIPACOES] TRANSPORTE: Evento de cancelamento processado com sucesso | [NR PARTICIPACOES] RCV: ERRO - O documento não pertence ao emitente",
   "emitentes": [
-    { "produtos": { "TRANSPORTE": { "success": true,  "statusCode": 200, "data": { "event": [ … ] } } } },
+    { "produtos": { "TRANSPORTE": { "success": true, "statusCode": 200, "data": { "event": [ … ] } } } },
     { "produtos": { "RCV": { "success": false, "statusCode": 500,
                              "error": "EVENT_PROCESSING_ERROR",
                              "message": "O documento não pertence ao emitente - Cliente: …" } } }
@@ -96,19 +104,19 @@ Exemplo de resposta com falha parcial:
 Repare no prefixo `[EMITENTE] PRODUTO:` e no marcador `ERRO -`. É um resumo textual para exibição — a informação confiável está em `emitentes[].produtos[].success`.
 :::
 
-## O ANTT vem por emitente
+## O ANTT vem por hierarquia
 
-Cada emitente tem o **seu** número de averbação:
+Cada hierarquia tem a **sua** apólice e, portanto, o seu número de averbação:
 
 ```text
 emitentes[i].produtos.TRANSPORTE.data.endorsement.antts[j].antt
 ```
 
-:::caution Não leia apenas o primeiro emitente
-Um documento com dois emitentes pode gerar dois ANTTs distintos, ou ter um emitente averbado e outro recusado. Percorra o array inteiro e grave o resultado de cada um.
+:::caution Não leia apenas a primeira hierarquia
+Um documento pode gerar ANTTs distintos em cada hierarquia, ou ter uma hierarquia averbada e outra recusada. Percorra o array inteiro e grave o resultado de cada uma.
 :::
 
-## Nem todo emitente tem `endorsement`
+## Nem toda hierarquia tem `endorsement`
 
 O conteúdo de `produtos[].data` **muda conforme a operação**:
 

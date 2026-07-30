@@ -27,41 +27,11 @@ Cada chave está vinculada a um emitente. Um TMS que atende vários embarcadores
 - Em caso de suspeita de vazamento, gere uma nova no portal e desative a anterior.
 :::
 
-## Validar e ativar uma chave
+## A chave já nasce pronta
 
-Antes do primeiro envio, o TMS pode validar a chave e recuperar os dados do emitente.
+Não há etapa de validação ou ativação: assim que é gerada no portal, a chave está apta a enviar documentos. Basta configurá-la no TMS e começar a integrar.
 
-### Consultar
-
-```text
-GET /acess_key/verify/{KEY}
-```
-
-### Ativar
-
-```text
-PUT /acess_key/active/{KEY}
-```
-
-**Resposta (ambas as rotas):**
-
-```json
-{
-  "id_chave_acesso": "41e1162b-0977-4810-bb33-d1e1a9087977",
-  "nom_razao_social": "SUGGEST ONE",
-  "cod_documento_pessoa": "32004241000103",
-  "nom_fantasia_emitente": "SUGGEST ONE CONSULTORIA LTDA"
-}
-```
-
-| Campo | Descrição |
-|---|---|
-| `id_chave_acesso` | Identificador interno da chave |
-| `nom_razao_social` | Razão social do emitente vinculado |
-| `cod_documento_pessoa` | CNPJ do emitente (somente números) |
-| `nom_fantasia_emitente` | Nome fantasia do emitente |
-
-Use esses dados para confirmar, na tela de configuração do TMS, que a chave informada pertence ao cliente correto.
+Se quiser confirmar que a chave está correta antes de colocar a operação no ar, o caminho é enviar um documento no ambiente de [qualidade](./ambientes.md) e verificar o retorno.
 
 ## Chave inválida ou desativada
 

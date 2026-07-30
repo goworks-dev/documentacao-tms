@@ -12,7 +12,7 @@ Pode chegar de três formas:
 ```text
 resposta.endorsement                                            (documento simples)
 resposta.produtos.TRANSPORTE.data.endorsement                   (emitente com vários produtos)
-resposta.emitentes[i].produtos.TRANSPORTE.data.endorsement      (multiemitente)
+resposta.emitentes[i].produtos.TRANSPORTE.data.endorsement      (multi-hierarquia)
 ```
 
 ## Exemplo
@@ -72,7 +72,7 @@ resposta.emitentes[i].produtos.TRANSPORTE.data.endorsement      (multiemitente)
 | `id_documento` | string (UUID) | Identificador da averbação no AverbGo. Use-o em consultas ao suporte |
 | `numero_documento` | string | Número do documento fiscal |
 | `num_serie_documento` | string | Série do documento |
-| `tipo_documento` | number \| string | Modelo: `55` NF-e, `57` CT-e, `58` MDF-e, `99` Outros |
+| `tipo_documento` | number \| string | Modelo do documento: `55` NF-e, `57` CT-e, `58` MDF-e. Documentos "Outros" usam os modelos `91` a `99` e `1001` a `1009` |
 | `modal` | string | Código do modal (`01` rodoviário) |
 | `urbano` | string | `Sim` / `Não` |
 | `cod_usuario` | string | Usuário/identificação do emitente no AverbGo |

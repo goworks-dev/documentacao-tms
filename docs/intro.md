@@ -47,7 +47,7 @@ Times de desenvolvimento que precisam:
 | CT-e | 57 | `<cteProc>` / `<CTe>` |
 | NF-e | 55 | `<nfeProc>` / `<NFe>` |
 | MDF-e | 58 | `<mdfeProc>` / `<MDFe>` |
-| Outros documentos de transporte | 99 | conforme o layout do documento |
+| Outros documentos de transporte | 91 a 99 e 1001 a 1009 | conforme o layout do documento |
 | Evento de cancelamento de CT-e | 110111 | `<procEventoCTe>` / `<eventoCTe>` |
 | Evento de cancelamento de NF-e | 110111 | `<procEventoNFe>` |
 | Evento de cancelamento de MDF-e | 110111 | `<procEventoMDFe>` / `<eventoMDFe>` |
@@ -67,7 +67,7 @@ Esta edição substitui integralmente a documentação anterior, que descrevia *
 
 | Formato | Quando ocorre | Capítulo |
 |---|---|---|
-| `emitentes[]` | documento que envolve mais de um emitente/relacionamento | [Multiemitente](./retornos/multiemitente.md) |
+| `emitentes[]` | mesmo emitente vinculado a mais de uma hierarquia (cliente/parceiro) | [Multi-hierarquia](./retornos/multi-hierarquia.md) |
 | `produtos{}` | emitente com mais de um produto contratado | [Produtos](./retornos/produtos.md) |
 | `endorsement` | averbação de CT-e, NF-e e Outros | [Averbação](./retornos/averbacao.md) |
 | `mdfe` | processamento de MDF-e | [MDF-e](./retornos/mdfe.md) |

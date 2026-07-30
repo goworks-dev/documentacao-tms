@@ -19,6 +19,12 @@ Alguns dados exigidos pela seguradora não têm campo próprio no layout da SEFA
 - O valor vai em `<xTexto>`.
 - Tags que aceitam múltiplos valores (motoristas, veículos) podem se repetir.
 
+:::caution Limite de 10 ocorrências
+A SEFAZ aceita no máximo **10 grupos `ObsCont` por documento**. Cada tag extra ocupa uma ocorrência — e tags repetidas contam individualmente: dois `cpfMotorista` e dois `idVeiculo` já consomem quatro das dez.
+
+Envie apenas as tags exigidas pela apólice do segurado. Se o documento passar do limite, a própria SEFAZ rejeita a autorização, antes mesmo de o XML chegar ao AverbGo.
+:::
+
 ## Tags disponíveis
 
 | Tag (CT-e e NF-e) | Campo | Formato / observação |

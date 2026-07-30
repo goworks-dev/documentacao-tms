@@ -19,7 +19,7 @@ const FeatureList = [
     to: '/docs/retornos/visao-geral',
     description: (
       <>
-        Os seis formatos de resposta documentados campo a campo — multiemitente, produtos,
+        Os seis formatos de resposta documentados campo a campo — multi-hierarquia, produtos,
         averbação, MDF-e e eventos —, com a árvore de decisão para consolidar o resultado.
       </>
     )

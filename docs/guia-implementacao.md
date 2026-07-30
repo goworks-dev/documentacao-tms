@@ -24,7 +24,7 @@ function tratarRetorno(httpStatus, corpo) {
     };
   }
 
-  // 1) multiemitente tem precedência
+  // 1) multi-hierarquia tem precedência
   const produtos = Array.isArray(corpo.emitentes)
     ? corpo.emitentes.flatMap(e => Object.entries(e.produtos ?? {}))
     : Object.entries(corpo.produtos ?? {});
@@ -156,7 +156,7 @@ Pontos observados no comportamento atual da API que exigem atenção no código:
 - [ ] Envio de MDF-e — `id_averbgo_mdfe` gravado
 - [ ] Cancelamento de CT-e/NF-e — evento processado
 - [ ] Cancelamento e encerramento de MDF-e — evento processado
-- [ ] Emitente multiemitente — todos os emitentes tratados
+- [ ] Emitente com mais de uma hierarquia — todas as hierarquias tratadas
 - [ ] Emitente com dois produtos — sucesso parcial exibido corretamente
 - [ ] Documento fora do prazo — recusa tratada sem retentativa infinita
 - [ ] Reenvio de documento já averbado — tratado como duplicidade
