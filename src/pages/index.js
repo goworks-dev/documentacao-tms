@@ -14,17 +14,30 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className={styles.heroText}>
+          Envie os XMLs emitidos pelo segurado e receba a averbação em tempo real.
+        </p>
+        <div className={styles.buttons}>
+          <Link className="button button--secondary button--lg" to="/docs/intro">
+            Começar a integrar
+          </Link>
+          <Link
+            className="button button--outline button--secondary button--lg"
+            to="/manual/Manual-Integracao-API-AverbGo.pdf"
+          >
+            Baixar o manual em PDF
+          </Link>
+        </div>
       </div>
     </header>
   )
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext()
   return (
     <Layout
-      title={`Documentação`}
-      description="Description will go into a meta tag in <head />"
+      title="Manual de Integração"
+      description="Manual de integração da API de averbação AverbGo: envio de XML, retornos, erros e guia de implementação."
     >
       <HomepageHeader />
       <main>

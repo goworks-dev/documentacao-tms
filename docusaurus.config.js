@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'AverbGo',
-  tagline: 'Documentação de uso AverbGo',
-  url: 'https://averbgo.com.br',
+  tagline: 'Manual de Integração — API de Averbação',
+  url: 'https://documentacao-averbgo.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -34,18 +34,9 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
+          routeBasePath: 'docs'
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css')
         }
@@ -60,22 +51,26 @@ const config = {
         defaultMode: 'dark'
       },
       navbar: {
-        title: 'Home',
+        title: 'AverbGo',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'AverbGo',
           src: 'img/logo.svg'
         },
         items: [
           {
             type: 'doc',
-            docId: 'api',
+            docId: 'intro',
             position: 'left',
-            label: 'API'
+            label: 'Manual de Integração'
           },
-          // { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/averbgo',
-            label: 'GitHub',
+            to: '/manual/Manual-Integracao-API-AverbGo.pdf',
+            label: 'PDF',
+            position: 'right'
+          },
+          {
+            href: 'https://averbgo.com.br/main/chaves',
+            label: 'Portal',
             position: 'right'
           }
         ]
@@ -84,21 +79,27 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Manual',
             items: [
-              {
-                label: 'API',
-                to: '/docs/api'
-              }
+              { label: 'Visão geral', to: '/docs/intro' },
+              { label: 'Envio de XML', to: '/docs/enviar-xml/request' },
+              { label: 'Retornos da API', to: '/docs/retornos/visao-geral' },
+              { label: 'Guia de implementação', to: '/docs/guia-implementacao' }
             ]
           },
           {
-            title: 'More',
+            title: 'AverbGo',
             items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/averbgo'
-              }
+              { label: 'Portal', href: 'https://averbgo.com.br' },
+              { label: 'Chaves de acesso', href: 'https://averbgo.com.br/main/chaves' },
+              { label: 'Manual em PDF', to: '/manual/Manual-Integracao-API-AverbGo.pdf' }
+            ]
+          },
+          {
+            title: 'Suporte',
+            items: [
+              { label: 'sac@averbgo.com.br', href: 'mailto:sac@averbgo.com.br' },
+              { label: 'Perguntas frequentes', to: '/docs/suporte' }
             ]
           }
         ],

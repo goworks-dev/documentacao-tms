@@ -1,52 +1,51 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
+import React from 'react'
+import clsx from 'clsx'
+import Link from '@docusaurus/Link'
+import styles from './styles.module.css'
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Envio de XML',
+    to: '/docs/enviar-xml/request',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Um único endpoint recebe CT-e, NF-e, MDF-e, documentos "Outros" e os eventos de
+        cancelamento e encerramento. Headers, corpo da requisição e exemplos em cURL, C#, Java e PHP.
       </>
-    ),
+    )
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Retornos da API',
+    to: '/docs/retornos/visao-geral',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Os seis formatos de resposta documentados campo a campo — multiemitente, produtos,
+        averbação, MDF-e e eventos —, com a árvore de decisão para consolidar o resultado.
       </>
-    ),
+    )
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Guia de implementação',
+    to: '/docs/guia-implementacao',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Tratamento completo da resposta, política de retentativa, idempotência, sucesso parcial
+        e checklist de homologação antes de subir para produção.
       </>
-    ),
-  },
-];
+    )
+  }
+]
 
-function Feature({Svg, title, description}) {
+function Feature({ title, description, to }) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+      <Link className={styles.card} to={to}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.cardText}>{description}</p>
+        <span className={styles.cardLink}>Ver documentação →</span>
+      </Link>
     </div>
-  );
+  )
 }
 
 export default function HomepageFeatures() {
@@ -60,5 +59,5 @@ export default function HomepageFeatures() {
         </div>
       </div>
     </section>
-  );
+  )
 }

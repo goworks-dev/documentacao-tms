@@ -1,0 +1,8 @@
+{
+  "label": "Retornos da API",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Todos os formatos de resposta devolvidos pela API de averbação, campo a campo, com exemplos reais e orientação de tratamento."
+  }
+}

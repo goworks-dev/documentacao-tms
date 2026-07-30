@@ -1,8 +1,8 @@
 {
   "label": "Envio de XML",
-  "position": 1,
+  "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Documentação de como é feito o envio de XML pela API do AverbGo, leia os próximos passos para mais detalhes."
+    "description": "Como enviar CT-e, NF-e, MDF-e e eventos para a API do AverbGo: endpoint, headers, corpo da requisição e tags extras."
   }
 }

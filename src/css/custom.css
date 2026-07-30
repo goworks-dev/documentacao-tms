@@ -1,30 +1,56 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Estilos globais do manual AverbGo.
+ * Baseado no Infima (template classic do Docusaurus).
  */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #121766;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
+  --ifm-color-primary: #1a6ce0;
+  --ifm-color-primary-dark: #1761c9;
+  --ifm-color-primary-darker: #155cbd;
+  --ifm-color-primary-darkest: #114b9c;
+  --ifm-color-primary-light: #3a83e6;
+  --ifm-color-primary-lighter: #4a8ee8;
+  --ifm-color-primary-lightest: #6ea5ed;
+  --ifm-code-font-size: 92%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --averbgo-turq: #17d6c8;
+  --averbgo-blue: #2b8cf0;
+  --averbgo-violet: #5b2ff0;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #00dbfb;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #4fa8ff;
+  --ifm-color-primary-dark: #2f96ff;
+  --ifm-color-primary-darker: #1f8dff;
+  --ifm-color-primary-darkest: #0071e0;
+  --ifm-color-primary-light: #6fb8ff;
+  --ifm-color-primary-lighter: #7fc0ff;
+  --ifm-color-primary-lightest: #a8d4ff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Faixa da home com a identidade AverbGo */
+.hero--primary {
+  background: linear-gradient(120deg, var(--averbgo-turq), var(--averbgo-blue) 55%, var(--averbgo-violet));
+  color: #fff;
+}
+
+.hero--primary .hero__title,
+.hero--primary .hero__subtitle {
+  color: #fff;
+}
+
+/* Tabelas do manual: muitas colunas de campos */
+.markdown table {
+  display: table;
+  width: 100%;
+}
+
+.markdown table th {
+  white-space: nowrap;
+}
+
+.markdown table code {
+  white-space: nowrap;
 }

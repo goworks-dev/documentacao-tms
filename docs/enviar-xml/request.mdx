@@ -1,333 +1,106 @@
-import Tabs from '@theme/Tabs'
-import TabItem from '@theme/TabItem'
+---
+sidebar_position: 1
+title: Requisição
+---
 
 # Requisição
 
-Para enviar o XML pela API é preciso enviar as seguintes informações:
+Um único endpoint recebe **todos** os tipos de documento e de evento.
 
-:::info
+```text
+POST /averbacao/process_xml
+```
 
-Os tipos de XML's suportados são: `CTe`, `NFe`, `MDFe`
+| Ambiente | URL completa |
+|---|---|
+| Produção | `https://api.averbgo.com.br/v1/averbacao/process_xml` |
+| Qualidade | `https://api.qa.averbgo.com.br/averbacao/process_xml` |
 
-:::
-
-- **`POST /averbacao/process_xml`**
-
-<Tabs className="unique-tabs">
-  <TabItem value="request" label="Requisição">
-
-### Parâmetros do Header
+## Headers
 
 ```text
 Authorization: SECRET_KEY
 Content-Type: application/xml
 ```
 
-A `SECRET_KEY` poderá ser gerada no portal do AverbGo ([https://averbgo.com.br/main/chaves](https://averbgo.com.br/main/chaves))
+| Header | Obrigatório | Observação |
+|---|---|---|
+| `Authorization` | sim | Chave de acesso do emitente, gerada em [averbgo.com.br/main/chaves](https://averbgo.com.br/main/chaves). Sem prefixo `Bearer`. |
+| `Content-Type` | sim | Sempre `application/xml`. |
 
-### Corpo da Requisição
+## Corpo da requisição
 
-O `XML` deverá ser enviado no body da requisição.
+O corpo é o **conteúdo do XML**, enviado como texto puro — não use `multipart/form-data`, JSON envelopado nem Base64.
 
-### Tags Extras
+- Codificação **UTF-8**.
+- XML **autorizado e protocolado** pela SEFAZ.
+- Um documento por requisição.
 
-| TAG EXTRA CTE          | TAG EXTRA NFE              | CAMPO                   |
-| ---------------------- | -------------------------- | ----------------------- |
-| modal                  | modal                      | Tipo Modal              |
-| ramo                   | ramo                       | Ramo                    |
-| ufCarrega              | ufCarrega                  | UF Origem               |
-| ufDescarrega           | ufDescarrega               | UF Destino              |
-| tipoMerca              | tipoMerca                  | Tipo Merca              |
-| cpfMotorista           | cpfMotorista               | CPF Motorista           |
-| rgMotorista            | rgMotorista                | RG Motorista            |
-| codLiberacao           | codLiberacao               | Libera Motorista        |
-| opCargaDescarga        | opCargaDescarga            | Carga e Descarga        |
-| opIcamento             | opIcamento                 | Içamento                |
-| opRemocao              | opRemocao                  | Remoção                 |
-| veiculoProprio         | veiculoProprio             | Transp Próprio          |
-| idVeiculo              | idVeiculo                  | Id veiculo              |
-| rcfdc                  | rcfdc                      | Cobertura RCFDC         |
-| rastreador             | rastreador                 | Rastreado               |
-| escolta                | escolta                    | Escoltado               |
-| meiosProprios          | meiosProprios              | Meios Próprios          |
-| container              | container                  | Valor Container         |
-| acessorios             | acessorios                 | Valor Acessórios        |
-| frete                  | frete                      | Valor Frete             |
-| despesas               | despesas                   | Valor Despesas          |
-| sem tag extra          | lucrosEsperados            | Valor Lucros Esp        |
-| impostos               | tag nativa (sem tag extra) | Valor Impostos          |
-| embarque               | embarque                   | Data e hora do embarque |
-| tipViagemInternacional | tipViagemInternacional     | Importa Exporta         |
-| avarias                | avarias                    | Valor Avarias           |
-| cidadeCarrega          | cidadeCarrega              | Cidade Origem           |
-| cidadeDescarrega       | cidadeDescarrega           | Cidade Destino          |
-| cnpjIsencao            | cnpjIsencao                | CNPJ Isenção            |
-
-O envio de tags extras deve ser colocado dentro da tag `compl`. Segue abaixo o modelo de XML.
-
-<details>
-<summary>Exemplo de Envio das Tags Extras</summary>
-
-```xml
-<compl>
-	<ObsCont xCampo="embarque">
-		<xTexto>2022-11-28T23:45:59-03:00</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="cpfMotorista">
-		<xTexto>36770479869</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="cpfMotorista">
-		<xTexto>00011122285</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="idVeiculo">
-		<xTexto>gei6644</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="idVeiculo">
-		<xTexto>gei6655</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="rcfdc">
-		<xTexto>S</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="container">
-		<xTexto>0.01</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="acessorios">
-		<xTexto>20.00</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="despesas">
-		<xTexto>50.00</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="impostos">
-		<xTexto>30.00</xTexto>
-	</ObsCont>
-	<ObsCont xCampo="avarias">
-		<xTexto>40.00</xTexto>
-	</ObsCont>
-</compl>
-```
-
-</details>
-  </TabItem>
-  <TabItem value="curl" label="cURL">
+## Exemplo — cURL
 
 ```bash
 curl --request POST \
-  --url https://api.averbgo.com.br/averbacao/process_xml \
+  --url https://api.averbgo.com.br/v1/averbacao/process_xml \
   --header 'Authorization: SECRET_KEY' \
   --header 'Content-Type: application/xml' \
-  --data 'CONTEUDO_DO_XML'
+  --data-binary '@CTe35260721976218000156570010000001851784420492-procCte.xml'
 ```
 
-  </TabItem>
+## Exemplo — C#
 
-  <TabItem value="response" label="Resposta Tipos">
+```csharp
+using var client = new HttpClient();
+client.DefaultRequestHeaders.Add("Authorization", secretKey);
 
-:::info
+var xml = await File.ReadAllTextAsync(caminhoXml, Encoding.UTF8);
+var body = new StringContent(xml, Encoding.UTF8, "application/xml");
 
-O número de `ANTT` é o numero de averbação.
+var resposta = await client.PostAsync(
+    "https://api.averbgo.com.br/v1/averbacao/process_xml", body);
 
+var json = await resposta.Content.ReadAsStringAsync();
+```
+
+## Exemplo — Java
+
+```java
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.averbgo.com.br/v1/averbacao/process_xml"))
+    .header("Authorization", secretKey)
+    .header("Content-Type", "application/xml")
+    .POST(HttpRequest.BodyPublishers.ofFile(Path.of(caminhoXml)))
+    .build();
+
+HttpResponse<String> response =
+    client.send(request, HttpResponse.BodyHandlers.ofString());
+```
+
+## Exemplo — PHP
+
+```php
+$ch = curl_init('https://api.averbgo.com.br/v1/averbacao/process_xml');
+curl_setopt_array($ch, [
+    CURLOPT_POST           => true,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HTTPHEADER     => [
+        'Authorization: ' . $secretKey,
+        'Content-Type: application/xml',
+    ],
+    CURLOPT_POSTFIELDS     => file_get_contents($caminhoXml),
+]);
+$json = curl_exec($ch);
+```
+
+## Quando enviar
+
+Envie **imediatamente após a autorização** do documento na SEFAZ. As apólices têm prazo de averbação (por exemplo, "antes do embarque" ou "N horas após a emissão"); documentos enviados fora desse prazo são recusados com `AVERBACAO_RECUSADA`.
+
+Para eventos, envie o XML do evento assim que ele for autorizado — o documento original já deve ter sido enviado antes.
+
+:::caution Ordem dos envios
+O evento de cancelamento de um documento que **nunca foi enviado** à API é recusado. Garanta que o documento original tenha sido processado antes de enviar o evento.
 :::
 
-```json
-{
-  "message": "string",
-  "endorsement": {
-    "dfe": {
-      "id_averbgo_dfe": "string",
-      "id_tipo_dfe": "string",
-      "doc_apoio": "string",
-      "initialTag": "string",
-      "docType": "string",
-      "num_chave_dfe": "string",
-      "xml": "string"
-    },
-    "id_documento": "string",
-    "id_pessoa_emitente": "string",
-    "cod_usuario": "string",
-    "data_emissao": "string",
-    "hora_emissao": "string",
-    "valor_carga": "number",
-    "valor_total": "number",
-    "valor_carga_segurado": "number",
-    "cod_impor_ept": "number",
-    "cidade_origem_id": "string",
-    "cidade_origem_nome": "string",
-    "ufini": "string",
-    "cidade_destino_id": "string",
-    "cidade_destino_nome": "string",
-    "uffim": "string",
-    "cnpj_emitente": "string",
-    "nom_fantasia_emitente": "string",
-    "cnpj_relacionamento": "string",
-    "nom_fantasia_relacionamento": "string",
-    "motivo": "string",
-    "dhr_averbacao": "string",
-    "data_embarque": "string",
-    "hora_embarque": "string",
-    "numero_documento": "string",
-    "num_serie_documento": "string",
-    "tip_status": "number",
-    "des_tipo_status": "string",
-    "id_meio_averbacao": "number",
-    "modal": "string",
-    "tipo_documento": "number",
-    "urbano": "string",
-    "isencao": {
-      "id_isencao": "string",
-      "cod_docum_res": "string",
-      "tipo_isencao": "string"
-    },
-    "apolices": [
-      {
-        "id_apolice": "string",
-        "tip_status": "number",
-        "id_ramo": "number",
-        "sta_cobertura_roubo": "boolean",
-        "sta_cobertura_2risco": "boolean",
-        "cod_apolice": "string",
-        "cod_externo": "string",
-        "dhr_inicio_vigencia": "string",
-        "dhr_fim_vigencia": "string",
-        "id_apolice_base": "string",
-        "id_apolice_anterior": "string",
-        "tip_usuario": "string",
-        "dhr_inclusao": "string",
-        "dhr_alteracao": "string",
-        "cod_usuario": "string",
-        "sta_valor_nota": "boolean",
-        "id_apolice_validade": "string",
-        "id_extrapolacao": "number",
-        "id_prazo_averbacao": "number",
-        "vlr_img": "number",
-        "num_prazo_averbacao": "number",
-        "num_prazo_emissao": "number",
-        "dta_inicio_validade": "string",
-        "dta_fim_validade": "string",
-        "cod_susep": "number",
-        "des_extrapolacao": "string",
-        "des_prazo_averbacao": "string",
-        "id_pessoa_emitente": "string",
-        "nom_fantasia_emitente": "string",
-        "id_pessoa_relacionamento": "string",
-        "nom_fantasia_relacionamento": "string",
-        "cnpj_relacionamento": "string",
-        "cod_documento_pessoa_estipulado": "string",
-        "cod_sigla_ramo": "string",
-        "des_ramo": "string"
-      }
-    ],
-    "antts": [
-      {
-        "antt": "string",
-        "numero_apolice": "string"
-      }
-    ]
-  }
-}
-```
+## Resposta
 
-  </TabItem>
-
-  <TabItem value="example-response" label="Resposta Exemplo">
-
-```json
-{
-  "message": "Processo de Averbação concluido com sucesso!",
-  "endorsement": {
-    "dfe": {
-      "id_averbgo_dfe": "aeca10ff-0aef-4e59-b248-0d872b259868",
-      "id_tipo_dfe": "55",
-      "doc_apoio": "dfe-067ada03-ccb1-4b02-b101-285fef917a85",
-      "initialTag": "nfeproc",
-      "docType": "nfe",
-      "num_chave_dfe": "99999999999999999999999999999999999999999999",
-      "xml": "XML ORIGINAL"
-    },
-    "id_documento": "aeca10ff-0aef-4e59-b248-0d872b259868",
-    "id_pessoa_emitente": "24da1eae-f39a-4cc4-8fc5-d4f28bc2f1ca",
-    "cod_usuario": "TESTES",
-    "data_emissao": "2022-08-08",
-    "hora_emissao": "11:06:57",
-    "valor_carga": 10000,
-    "valor_total": 10000,
-    "valor_carga_segurado": 10000,
-    "cod_impor_ept": 1,
-    "cidade_origem_id": "5300108",
-    "cidade_origem_nome": "BRASILIA - DF",
-    "ufini": "DF",
-    "cidade_destino_id": "5300108",
-    "cidade_destino_nome": "BRASILIA - DF",
-    "uffim": "DF",
-    "cnpj_emitente": "12123123000101",
-    "nom_fantasia_emitente": "TESTE",
-    "cnpj_relacionamento": "12123123000101",
-    "nom_fantasia_relacionamento": "TESTE",
-    "motivo": "",
-    "dhr_averbacao": "2023-03-06T09:52:26.393Z",
-    "data_embarque": "2023-03-06",
-    "hora_embarque": "09:52",
-    "numero_documento": "1822047",
-    "num_serie_documento": "0",
-    "tip_status": 1,
-    "des_tipo_status": "Averbado",
-    "id_meio_averbacao": 2,
-    "modal": "01",
-    "tipo_documento": 55,
-    "urbano": "Sim",
-    "isencao": {
-      "id_isencao": null,
-      "cod_docum_res": null,
-      "tipo_isencao": "Sem isenção"
-    },
-    "apolices": [
-      {
-        "id_apolice": "6214b6e7-0ec0-4713-98e8-6654305cad67",
-        "tip_status": 1,
-        "id_ramo": 1,
-        "sta_cobertura_roubo": false,
-        "sta_cobertura_2risco": false,
-        "cod_apolice": "33333",
-        "cod_externo": "33333",
-        "dhr_inicio_vigencia": "2023-02-01T00:00:00.000Z",
-        "dhr_fim_vigencia": "2024-01-02T00:00:00.000Z",
-        "id_apolice_base": null,
-        "id_apolice_anterior": null,
-        "tip_usuario": "I",
-        "dhr_inclusao": "2023-03-06T09:50:17.863Z",
-        "dhr_alteracao": "2023-03-06T09:50:17.863Z",
-        "cod_usuario": "teste.teste",
-        "sta_valor_nota": false,
-        "id_apolice_validade": "bfaaccea-391b-4809-b7e0-cec3a301f66d",
-        "id_extrapolacao": 1,
-        "id_prazo_averbacao": 1,
-        "vlr_img": 100000,
-        "num_prazo_averbacao": 1,
-        "num_prazo_emissao": null,
-        "dta_inicio_validade": "2023-02-01T00:00:00.000Z",
-        "dta_fim_validade": "2024-01-02T00:00:00.000Z",
-        "cod_susep": 21,
-        "des_extrapolacao": "Recusa",
-        "des_prazo_averbacao": "Antes do Embarque",
-        "id_pessoa_emitente": "24da1eae-f39a-4cc4-8fc5-d4f28bc2f1ca",
-        "nom_fantasia_emitente": "TESTE",
-        "id_pessoa_relacionamento": "36db2c33-fd10-4bbd-8386-f8df4374f54a",
-        "nom_fantasia_relacionamento": "TESTE",
-        "cnpj_relacionamento": "12123123000101",
-        "cod_documento_pessoa_estipulado": null,
-        "cod_sigla_ramo": "TRNAC",
-        "des_ramo": "Transporte Nacional"
-      }
-    ],
-    "antts": [
-      {
-        "antt": "0623801243318365800013555000001822047097",
-        "numero_apolice": "33333"
-      }
-    ]
-  }
-}
-```
-
-  </TabItem>
-
-</Tabs>
+A resposta é sempre `application/json`. Os formatos possíveis estão descritos em **[Retornos da API](../retornos/visao-geral.md)**.
