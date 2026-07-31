@@ -24,7 +24,7 @@ O bloco `produtos` é um mapa cuja chave é o nome do produto:
 | Chave | Produto |
 |---|---|
 | `TRANSPORTE` | Seguro de transporte — é o produto que gera o **ANTT** |
-| `RCV` | Responsabilidade Civil de Veículos (RC-V) |
+| `RCV` | Responsabilidade Civil de Veículos (RC-V) — dados de viagem e veículos vêm do MDF-e ou das [tags do RC-V](../enviar-xml/rcv.md) |
 | `TRANSMISSAO` | Transmissão do documento a terceiros |
 
 :::info A lista pode crescer

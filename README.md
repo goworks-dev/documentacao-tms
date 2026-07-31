@@ -16,6 +16,8 @@ docs/
   enviar-xml/
     request.mdx            endpoint, headers, exemplos de código
     tags-extras.md         ObsCont e o limite da SEFAZ
+    rcv.md                 layout posicional das tags do RC-V
+    documento-minimo-rcv.md  XML modelo 59 para quem não emite documento fiscal
   retornos/                os seis formatos de resposta
     visao-geral.md         árvore de decisão
     multi-hierarquia.md    emitentes[]

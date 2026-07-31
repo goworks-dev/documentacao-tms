@@ -48,6 +48,7 @@ Times de desenvolvimento que precisam:
 | NF-e | 55 | `<nfeProc>` / `<NFe>` |
 | MDF-e | 58 | `<mdfeProc>` / `<MDFe>` |
 | Outros documentos de transporte | 91 a 99 e 1001 a 1009 | conforme o layout do documento |
+| [Documento mínimo RC-V](./enviar-xml/documento-minimo-rcv.md) | 59 | `<mdfeProc>` com `<mod>59</mod>` — não é documento fiscal |
 | Evento de cancelamento de CT-e | 110111 | `<procEventoCTe>` / `<eventoCTe>` |
 | Evento de cancelamento de NF-e | 110111 | `<procEventoNFe>` |
 | Evento de cancelamento de MDF-e | 110111 | `<procEventoMDFe>` / `<eventoMDFe>` |

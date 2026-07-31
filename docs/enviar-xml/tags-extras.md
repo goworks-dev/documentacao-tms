@@ -5,14 +5,22 @@ title: Tags extras
 
 # Tags extras
 
-Alguns dados exigidos pela seguradora não têm campo próprio no layout da SEFAZ. Eles são enviados como **observações do contribuinte**, dentro da tag `<compl>` do documento:
+Alguns dados exigidos pela seguradora não têm campo próprio no layout da SEFAZ. Eles são enviados como **observações do contribuinte**, no grupo de informações complementares do documento:
 
 ```xml
+<!-- CT-e -->
 <compl>
   <ObsCont xCampo="NOME_DA_TAG">
     <xTexto>VALOR</xTexto>
   </ObsCont>
 </compl>
+
+<!-- NF-e -->
+<infAdic>
+  <obsCont xCampo="NOME_DA_TAG">
+    <xTexto>VALOR</xTexto>
+  </obsCont>
+</infAdic>
 ```
 
 - O atributo `xCampo` recebe o **nome da tag extra** (respeitando maiúsculas e minúsculas).
@@ -110,3 +118,7 @@ As `ObsCont` precisam estar no XML **antes da assinatura e da autorização**. N
 ## Quais tags são obrigatórias?
 
 Depende da apólice e do ramo contratado pelo segurado. Em caso de dúvida sobre quais tags o cliente precisa enviar, consulte **sac@averbgo.com.br**.
+
+## Seguro RC-V
+
+O produto RC-V usa um conjunto próprio de tags (`rcv`, `rcvVeiculos1` e `rcvVeiculos2`), com vários campos posicionais dentro de cada uma. Está documentado em **[Tags do RC-V](./rcv.md)**.
