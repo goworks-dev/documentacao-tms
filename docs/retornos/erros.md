@@ -126,6 +126,7 @@ mensagem =  produtos[*].message   (quando houver, uma por produto)
 | `Data de Embarque deve ser maior ou igual à Data de Emissão.` | Tag extra `embarque` anterior à emissão do documento |
 | `O Prazo para averbação foi ultrapassado. Prazo de Averbação: …` | Envio fora do prazo da apólice |
 | `Documento ja existe na base de dados. Chave do documento: …` | Reenvio de documento já averbado |
+| `Valor da Carga maior que o LMG cadastrado` | Carga acima do LMG sem Código de Liberação válido — ver [Código de Liberação de LMG](../enviar-xml/tags-extras.md#código-de-liberação-de-lmg) |
 | `Emitente sem meio de averbação habilitado para os produtos do documento` | Emitente sem produto habilitado |
 | `Nenhuma apolice RCV vigente encontrada` | RC-V sem apólice vigente |
 | `Tipo de documento 'CTE' não autorizado para apólice RCV. Tipos permitidos: …` | Documento fora dos tipos aceitos pela apólice |

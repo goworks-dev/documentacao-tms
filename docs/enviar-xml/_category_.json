@@ -3,6 +3,6 @@
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Como enviar CT-e, NF-e, MDF-e e eventos para a API do AverbGo: endpoint, headers, corpo da requisição e tags extras."
+    "description": "Como enviar CT-e, NF-e, MDF-e, outros documentos e eventos para a API do AverbGo: endpoint, headers, corpo da requisição e tags extras."
   }
 }

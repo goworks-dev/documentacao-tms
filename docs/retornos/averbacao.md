@@ -138,7 +138,7 @@ Este campo já foi observado como número (`57`) e como string (`"57"`) em respo
 | Campo | Tipo | Descrição |
 |---|---|---|
 | `dfe.id_averbgo_dfe` | string (UUID) | Identificador do XML recebido |
-| `dfe.num_chave_dfe` | string (44) | Chave de acesso do documento |
+| `dfe.num_chave_dfe` | string | Chave de acesso do documento (44 dígitos). Em [documentos "Outros"](../enviar-xml/outros-documentos.md#chave-do-documento), é a chave informada pela TMS ou a gerada pelo AverbGo — use-a no cancelamento |
 | `dfe.id_tipo_dfe` | number \| string | Modelo do documento |
 | `dfe.docType` | string | Tipo detectado (`nfe`, `cte`, `mdfe`) |
 | `dfe.initialTag` | string | Tag raiz identificada no XML |

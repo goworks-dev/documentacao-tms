@@ -29,6 +29,7 @@ const CHAPTERS = [
   'autenticacao.md',
   'enviar-xml/request.mdx',
   'enviar-xml/tags-extras.md',
+  'enviar-xml/outros-documentos.md',
   'enviar-xml/rcv.md',
   'enviar-xml/documento-minimo-rcv.md',
   'retornos/visao-geral.md',

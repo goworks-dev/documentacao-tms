@@ -23,7 +23,8 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--outline button--secondary button--lg"
-            to="/manual/Manual-Integracao-API-AverbGo.pdf"
+            to="pathname:///manual/Manual-Integracao-API-AverbGo.pdf"
+            download
           >
             Baixar o manual em PDF
           </Link>

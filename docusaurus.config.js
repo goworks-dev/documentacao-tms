@@ -64,7 +64,9 @@ const config = {
             label: 'Manual de Integração'
           },
           {
-            to: '/manual/Manual-Integracao-API-AverbGo.pdf',
+            // pathname:// escapa do roteador SPA — sem ele o React Router
+            // intercepta o clique e renderiza a página 404 em vez de baixar.
+            to: 'pathname:///manual/Manual-Integracao-API-AverbGo.pdf',
             label: 'PDF',
             position: 'right'
           },
@@ -92,7 +94,7 @@ const config = {
             items: [
               { label: 'Portal', href: 'https://averbgo.com.br' },
               { label: 'Chaves de acesso', href: 'https://averbgo.com.br/main/chaves' },
-              { label: 'Manual em PDF', to: '/manual/Manual-Integracao-API-AverbGo.pdf' }
+              { label: 'Manual em PDF', to: 'pathname:///manual/Manual-Integracao-API-AverbGo.pdf' }
             ]
           },
           {

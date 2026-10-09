@@ -9,6 +9,8 @@ Há operações em que o segurado **não emite documento fiscal algum** para a v
 
 Para esses casos existe o **documento mínimo**: um XML montado pelo próprio TMS no formato do MDF-e, contendo só o necessário para averbar o RC-V.
 
+Assim como o MDF-e agrupa vários documentos de uma viagem, o documento mínimo representa **a viagem**, não cada carga. Exemplo: um cliente que trabalha com **ordem de frete composta por várias ordens de coleta** envia um documento mínimo por ordem de frete — com o veículo, o condutor e o trajeto da viagem — e averba o RC-V por ele.
+
 | Situação do cliente | O que enviar |
 |---|---|
 | Emite MDF-e | O próprio MDF-e |

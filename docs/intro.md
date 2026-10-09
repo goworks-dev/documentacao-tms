@@ -47,7 +47,7 @@ Times de desenvolvimento que precisam:
 | CT-e | 57 | `<cteProc>` / `<CTe>` |
 | NF-e | 55 | `<nfeProc>` / `<NFe>` |
 | MDF-e | 58 | `<mdfeProc>` / `<MDFe>` |
-| Outros documentos de transporte | 91 a 99 e 1001 a 1009 | conforme o layout do documento |
+| [Outros documentos de transporte](./enviar-xml/outros-documentos.md) | 91 a 99 e 1001 a 1009 | `<cteProc>` / `<CTe>` (layout do CT-e, sem assinatura e sem protocolo) |
 | [Documento mínimo RC-V](./enviar-xml/documento-minimo-rcv.md) | 59 | `<mdfeProc>` com `<mod>59</mod>` — não é documento fiscal |
 | Evento de cancelamento de CT-e | 110111 | `<procEventoCTe>` / `<eventoCTe>` |
 | Evento de cancelamento de NF-e | 110111 | `<procEventoNFe>` |
@@ -55,7 +55,7 @@ Times de desenvolvimento que precisam:
 | Evento de encerramento de MDF-e | 110112 | `<procEventoMDFe>` |
 
 :::info
-O XML deve estar no padrão SEFAZ e **protocolado** (documento autorizado). XMLs sem protocolo de autorização são recusados.
+O XML deve estar no padrão SEFAZ e **protocolado** (documento autorizado). XMLs sem protocolo de autorização são recusados — exceto os [documentos "Outros"](./enviar-xml/outros-documentos.md), que não passam pela SEFAZ.
 :::
 
 :::tip Precisa enviar outro tipo de documento?
